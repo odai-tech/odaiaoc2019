@@ -29,16 +29,17 @@
         android:padding="15dp" />
 
     <Button
-        android:id="@+id/buttonSignUp"
-        android:layout_width="285dp"
-        android:layout_height="wrap_content"
-        android:text="SignUp" />
-
-    <Button
         android:id="@+id/buttonLogIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="LogIn" />
+
+
+    <Button
+        android:id="@+id/buttonSignUp"
+        android:layout_width="285dp"
+        android:layout_height="wrap_content"
+        android:text="SignUp" />
 
 
 </LinearLayout>

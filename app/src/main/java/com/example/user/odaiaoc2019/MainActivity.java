@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_main);
 
         //2.initialize properties
         editTextEmail=findViewById(R.id.editTextEmail);
@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if(editTextEmail.getText().toString().equals("")|| editTextPassword.getText().toString().equals("")){
                 Toast.makeText(this,"Empty Password or Email",Toast.LENGTH_LONG).show();
             }
-            else{ Intent i=new Intent(this,MainActivity.class);
+            else{
+                Intent i=new Intent(this,HomePage.class);
                 i.putExtra("email" , editTextEmail.getText().toString());
                 i.putExtra("password" , editTextPassword.getText().toString());
                 startActivity(i);}
