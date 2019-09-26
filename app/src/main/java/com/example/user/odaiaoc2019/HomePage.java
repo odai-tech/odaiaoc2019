@@ -18,17 +18,25 @@ public class HomePage extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.my_menu, menu);
         return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.logout){
-            Intent i=new Intent(this,MainActivity.class);
-            startActivity(i);
-        }else{
-            Intent i=new Intent(this,ProfileActivity.class);
-            startActivity(i);
+        public boolean onCreateOptionsMenu( Menu;menu);
+        {
+            getMenuInflater().inflate(R.menu.my_menu, menu);
+            return true;
         }
-        return super.onOptionsItemSelected(item);
-    }
-}
+
+        public boolean onOptionsItemSelected(MenuItem item) {
+            Intent goToNextActivity = new Intent(getApplicationContext(), .class);
+
+            switch (item.getItemId()) {
+
+                case R.id.SignUp:
+                    goToNextActivity = new Intent(getApplicationContext(),SignUpActivity .class);
+                    startActivity(goToNextActivity);
+                    break;
+
+
+            }
+            return true;
+        }
+
+    } }
