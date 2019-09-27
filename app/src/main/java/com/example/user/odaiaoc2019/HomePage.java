@@ -18,25 +18,25 @@ public class HomePage extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.my_menu, menu);
         return super.onCreateOptionsMenu(menu);
-        public boolean onCreateOptionsMenu( Menu;menu);
-        {
-            getMenuInflater().inflate(R.menu.my_menu, menu);
-            return true;
         }
 
-        public boolean onOptionsItemSelected(MenuItem item) {
-            Intent goToNextActivity = new Intent(getApplicationContext(), .class);
 
-            switch (item.getItemId()) {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent goToNextActivity;
 
-                case R.id.SignUp:
-                    goToNextActivity = new Intent(getApplicationContext(),SignUpActivity .class);
-                    startActivity(goToNextActivity);
-                    break;
+        switch (item.getItemId()) {
+
+            case R.id.profile:
+                goToNextActivity = new Intent(getApplicationContext(), HomePage.class);
+                startActivity(goToNextActivity);
+                break;
+
+            case R.id.logout:
+                goToNextActivity = new Intent(getApplicationContext(), SignUpActivity.class);
+                startActivity(goToNextActivity);
+                break;
 
 
-            }
-            return true;
         }
-
+        return true;
     } }
