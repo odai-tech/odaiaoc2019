@@ -27,7 +27,7 @@ public class HomePage extends AppCompatActivity {
         switch (item.getItemId()) {
 
             case R.id.profile:
-                goToNextActivity = new Intent(getApplicationContext(), HomePage.class);
+                goToNextActivity = new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(goToNextActivity);
                 break;
 
@@ -39,4 +39,5 @@ public class HomePage extends AppCompatActivity {
 
         }
         return true;
-    } }
+    }
+}
