@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/email"
+        android:hint="email"
         android:inputType="textEmailAddress"
         android:padding="15dp" />
 
@@ -37,7 +37,7 @@
 
     <Button
         android:id="@+id/buttonSignUp"
-        android:layout_width="285dp"
+        android:layout_width="284dp"
         android:layout_height="wrap_content"
         android:text="SignUp" />
 

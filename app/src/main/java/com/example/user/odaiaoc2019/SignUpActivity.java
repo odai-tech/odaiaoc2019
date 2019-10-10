@@ -17,10 +17,7 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        listItems = getResources().getStringArray(R.array.type_item);
-
         confirm = findViewById(R.id.buttonConfirm);
-        // final TextView mResult
         confirm.setOnClickListener(new View.OnClickListener() {
 
             @Override
