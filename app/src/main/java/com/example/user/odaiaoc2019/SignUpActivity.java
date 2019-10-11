@@ -18,6 +18,8 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         confirm = findViewById(R.id.buttonConfirm);
+        listItems = getResources().getStringArray(R.array.type_item);
+
         confirm.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -26,11 +28,13 @@ public class SignUpActivity extends AppCompatActivity {
                 mBuilder.setTitle("Choose your BloodType");
                 mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
                     }
                 });
 
+                AlertDialog mDialog = mBuilder.create();
+                mDialog.show();
             }
         });
     }
