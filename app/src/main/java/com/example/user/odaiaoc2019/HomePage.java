@@ -14,7 +14,7 @@ public class HomePage extends AppCompatActivity {
 
     ListView listView;
     ArrayAdapter<String> adapter;
-    ArrayList<String> arrayList;
+    ArrayList<BloodDonation> arrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,16 +22,14 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
 
         listView=findViewById(R.id.myList);
-        arrayList=new ArrayList<String>();
-        adapter =new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,arrayList);
+        arrayList=new ArrayList<BloodDonation>();
+        arrayList.add(new BloodDonation(33, "OO", true, R.drawable.ic_launcher_background,"first", "123", "123"));
+
+        //      adapter =new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,arrayList);
         listView.setAdapter(adapter);
 
-        arrayList.add("ODI");
-        arrayList.add("ODI");
-        arrayList.add("ODI");
-        arrayList.add("ODI");
-        arrayList.add("ODI");
-        arrayList.add("ODI");
+        ///  public BloodDonation(int age , String BloodType , boolean isHealthy , int imageId , String FullName, int PhoneNumner , int ID  ){
+
 
     }
 

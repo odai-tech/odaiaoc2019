@@ -24,6 +24,7 @@ public class SignUpActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View View) {
+
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(SignUpActivity.this);
                 mBuilder.setTitle("Choose your BloodType");
                 mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
