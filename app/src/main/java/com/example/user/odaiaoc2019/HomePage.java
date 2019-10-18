@@ -5,34 +5,33 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class HomePage extends AppCompatActivity {
+public class HomePage extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     ListView listView;
-    ArrayAdapter<String> adapter;
-    ArrayList<BloodDonation> arrayList;
+    ArrayList<BloodDonation> bloodDonations = new ArrayList<>();
+    ArrayList<Hospital> hospitals = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        listView=findViewById(R.id.myList);
-        arrayList=new ArrayList<BloodDonation>();
-        arrayList.add(new BloodDonation(33, "OO", true, R.drawable.ic_launcher_background,"first", "123", "123"));
+        listView = findViewById(R.id.hospitalList);
 
-        //      adapter =new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1,arrayList);
-        listView.setAdapter(adapter);
+        bloodDonations.add(new BloodDonation(33, "OO", true, R.drawable.ic_launcher_background, "first", "123", "123"));
 
-        ///  public BloodDonation(int age , String BloodType , boolean isHealthy , int imageId , String FullName, int PhoneNumner , int ID  ){
+        hospitals.add(new Hospital(23.45, 2.36, bloodDonations, R.drawable.ic_launcher_background, "Odais Hospital"));
 
-
+        CustomAdapterHospital adapterHospital = new CustomAdapterHospital(this, R.layout.hospital_item, hospitals);
+        listView.setAdapter(adapterHospital);
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.my_menu, menu);
@@ -58,5 +57,11 @@ public class HomePage extends AppCompatActivity {
 
         }
         return true;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent i = new Intent(this, BloodDonationActivity.class);
+        startActivity(i);
     }
 }

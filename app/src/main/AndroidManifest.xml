@@ -19,7 +19,8 @@
         <activity android:name=".HomePage" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".ListActivity"></activity>
+        <activity android:name=".ListActivity" />
+        <activity android:name=".BloodDonationActivity"></activity>
     </application>
 
 </manifest>

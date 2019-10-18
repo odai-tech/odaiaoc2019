@@ -7,10 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class SignUpActivity extends AppCompatActivity {
-    String[] listItems;
+    String[] ListItems= new String[8] ;
+
     Button confirm;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,18 +21,19 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         confirm = findViewById(R.id.buttonConfirm);
-        listItems = getResources().getStringArray(R.array.type_item);
+        ListItems = getResources().getStringArray(R.array.type_item);
 
         confirm.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View View) {
-
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(SignUpActivity.this);
                 mBuilder.setTitle("Choose your BloodType");
-                mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+                mBuilder.setSingleChoiceItems(ListItems, -1, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                //intent here
+                        Toast.makeText(SignUpActivity.this, ListItems[which], Toast.LENGTH_LONG).show();
                         dialog.dismiss();
                     }
                 });
@@ -37,6 +41,7 @@ public class SignUpActivity extends AppCompatActivity {
                 AlertDialog mDialog = mBuilder.create();
                 mDialog.show();
             }
+
         });
     }
 }
