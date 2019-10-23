@@ -3,45 +3,113 @@ package com.example.user.odaiaoc2019;
 import android.app.AlertDialog;
 import android.app.LauncherActivity;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class SignUpActivity extends AppCompatActivity {
+
+
+    private static final String TAG = "Firebase";
+    private FirebaseAuth mAuth;
+
+    EditText editTextEmail, editTextPassword;
+
     String[] ListItems= new String[8] ;
 
-    Button confirm;
+
+    Button buttonConfirm;
+    Button buttonConfirm2;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_sign_up);
 
-        confirm = findViewById(R.id.buttonConfirm);
+        editTextEmail=findViewById(R.id.editTextEmail);
+        editTextPassword=findViewById(R.id.editTextPassword);
+
+
+        mAuth = FirebaseAuth.getInstance();
+
+        buttonConfirm = findViewById(R.id.buttonConfirm);
+        buttonConfirm2 = findViewById(R.id.buttonConfirm2);
+
         ListItems = getResources().getStringArray(R.array.type_item);
 
-        confirm.setOnClickListener(new View.OnClickListener() {
+        buttonConfirm.setOnClickListener(new View.OnClickListener() {
 
             @Override
-            public void onClick(View View) {
-                AlertDialog.Builder mBuilder = new AlertDialog.Builder(SignUpActivity.this);
-                mBuilder.setTitle("Choose your BloodType");
-                mBuilder.setSingleChoiceItems(ListItems, -1, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                //intent here
-                        Toast.makeText(SignUpActivity.this, ListItems[which], Toast.LENGTH_LONG).show();
-                        dialog.dismiss();
-                    }
-                });
+            public void onClick(View view) {
+                if (view == buttonConfirm) {
+                    AlertDialog.Builder mBuilder = new AlertDialog.Builder(SignUpActivity.this);
+                    mBuilder.setTitle("Choose your BloodType");
+                    mBuilder.setSingleChoiceItems(ListItems, -1, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
 
-                AlertDialog mDialog = mBuilder.create();
-                mDialog.show();
+                            Toast.makeText(SignUpActivity.this, ListItems[which], Toast.LENGTH_LONG).show();
+                            dialog.dismiss();
+                        }
+                    });
+
+                    AlertDialog mDialog = mBuilder.create();
+                    mDialog.show();
+                } else {
+                    signUp(editTextEmail.getText().toString(), editTextPassword.getText().toString());
+
+                }
+
             }
 
-        });
+        };
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        //updateUI(currentUser);
+    }
+    public void signUp(String email, String password){
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "createUserWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                        //    updateUI(user);
+                            Intent i=new Intent(SignUpActivity.this , HomePage.class);
+                            i.putExtra("Email" , editTextEmail.getText().toString());
+                            i.putExtra("Password" , editTextPassword.getText().toString());
+                            startActivity(i);
+
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(SignUpActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        //    updateUI(null);
+                        }
+
+                        // ...
+                    }
+                });
     }
 }
