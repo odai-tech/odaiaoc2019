@@ -19,7 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class SignUpActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity implements View.OnClickListener{
 
 
     private static final String TAG = "Firebase";
@@ -33,51 +33,29 @@ public class SignUpActivity extends AppCompatActivity {
     Button buttonConfirm;
     Button buttonConfirm2;
 
+    String bloodType = "undefined";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_sign_up);
+
         mAuth = FirebaseAuth.getInstance();
-        editTextEmail=findViewById(R.id.editTextEmail);
-        editTextPassword=findViewById(R.id.editTextPassword);
-
-
-
-
-        buttonConfirm = findViewById(R.id.buttonConfirm);
-        buttonConfirm2 = findViewById(R.id.buttonConfirm2);
 
         ListItems = getResources().getStringArray(R.array.type_item);
 
-        buttonConfirm.setOnClickListener(new View.OnClickListener() {
+        editTextEmail=findViewById(R.id.editTextEmail);
+        editTextPassword=findViewById(R.id.editTextPassword);
 
-            @Override
-            public void onClick(View view) {
-                if (view == buttonConfirm) {
-                    AlertDialog.Builder mBuilder = new AlertDialog.Builder(SignUpActivity.this);
-                    mBuilder.setTitle("Choose your BloodType");
-                    mBuilder.setSingleChoiceItems(ListItems, -1, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
+        buttonConfirm2 = findViewById(R.id.buttonConfirm2);
+        buttonConfirm2.setOnClickListener(this);
 
-                            Toast.makeText(SignUpActivity.this, ListItems[which], Toast.LENGTH_LONG).show();
-                            dialog.dismiss();
-                        }
-                    }) ;
+        buttonConfirm = findViewById(R.id.buttonConfirm);
+        buttonConfirm.setOnClickListener(this);
 
-                    AlertDialog mDialog = mBuilder.create();
-                    mDialog.show();
-                } else {
-                    signUp(editTextEmail.getText().toString(), editTextPassword.getText().toString());
-                    Intent i= new Intent (SignUpActivity.this, HomePage.class);
-                    startActivity(i);
-                }
 
-            }
-
-        });
 
     }
     @Override
@@ -98,7 +76,7 @@ public class SignUpActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             //    updateUI(user);
                             Intent i=new Intent(SignUpActivity.this , HomePage.class);
-
+                            i.putExtra("bloodType", bloodType);
                             startActivity(i);
 
                         } else {
@@ -113,4 +91,32 @@ public class SignUpActivity extends AppCompatActivity {
                     }
                 });
     }
-}
+
+    @Override
+    public void onClick(View v) {
+        if(v==buttonConfirm2) {
+            if (!bloodType.equals("undefined"))
+                signUp(editTextEmail.getText().toString(), editTextPassword.getText().toString());
+            else
+                Toast.makeText(SignUpActivity.this, "Please Choose Blood Type", Toast.LENGTH_LONG).show();
+
+        }
+        else{
+                    AlertDialog.Builder mBuilder = new AlertDialog.Builder(SignUpActivity.this);
+                    mBuilder.setTitle("Choose your BloodType");
+                    mBuilder.setSingleChoiceItems(ListItems, -1, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            Toast.makeText(SignUpActivity.this, ListItems[which], Toast.LENGTH_LONG).show();
+                            bloodType = ListItems[which];
+                            dialog.dismiss();
+                        }
+                    }) ;
+
+                    AlertDialog mDialog = mBuilder.create();
+                    mDialog.show();
+                }
+            }
+        }
+

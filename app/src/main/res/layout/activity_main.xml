@@ -4,24 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="25dp"
     android:orientation="vertical"
-    android:padding="25dp"
+    android:layout_gravity="center|center_vertical"
+    android:gravity="center|center_vertical"
+    android:background="#000000 "
     tools:context=".MainActivity">
 
 
     <EditText
+        android:layout_marginTop="15dp"
         android:id="@+id/editTextEmail"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="email"
+        android:textColorHint="#FFFFFF"
+        android:textColor="#FFFFFF"
         android:inputType="textEmailAddress"
         android:padding="15dp" />
 
     <EditText
         android:id="@+id/editTextPassword"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Password"
@@ -29,21 +35,24 @@
         android:padding="15dp" />
 
 
-
     <Button
         android:id="@+id/buttonLogIn"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="LogIn" />
 
 
     <Button
         android:id="@+id/buttonSignUp"
-        android:layout_width="284dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:text="SignUp" />
 
-
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/bloodlogo" />
 
 
 </LinearLayout>
