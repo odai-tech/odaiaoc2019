@@ -20,7 +20,8 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".ListActivity" />
-        <activity android:name=".BloodDonationActivity"></activity>
+        <activity android:name=".BloodDonationActivity" />
+        <activity android:name=".HospitalUI"></activity>
     </application>
 
 </manifest>
