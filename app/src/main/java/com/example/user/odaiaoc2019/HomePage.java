@@ -28,6 +28,7 @@ public class HomePage extends AppCompatActivity implements AdapterView.OnItemCli
         bloodDonations.add(new BloodDonation(33, "OO", true, R.drawable.ic_launcher_background, "first", "123", "123"));
 
         hospitals.add(new Hospital(23.45, 2.36, bloodDonations, R.drawable.ic_launcher_background, "Odais Hospital"));
+        hospitals.add(new Hospital(19.5, 4.66, bloodDonations, R.drawable.ic_launcher_background, "Odais Hospital"));
 
         CustomAdapterHospital adapterHospital = new CustomAdapterHospital(this, R.layout.hospital_item, hospitals);
         listView.setAdapter(adapterHospital);
@@ -60,8 +61,11 @@ public class HomePage extends AppCompatActivity implements AdapterView.OnItemCli
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent i = new Intent(this, BloodDonationActivity.class);
-        startActivity(i);
-    }
-}
+
+        public void onItemClick (AdapterView < ? > parent, View view,int position, long id){
+
+                Intent i = new Intent(this, HospitalUI.class);
+
+                startActivity(i);
+            }
+        }
