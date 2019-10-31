@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -32,6 +33,8 @@ public class HomePage extends AppCompatActivity implements AdapterView.OnItemCli
 
         CustomAdapterHospital adapterHospital = new CustomAdapterHospital(this, R.layout.hospital_item, hospitals);
         listView.setAdapter(adapterHospital);
+
+        listView.setOnItemClickListener(this);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -65,7 +68,6 @@ public class HomePage extends AppCompatActivity implements AdapterView.OnItemCli
         public void onItemClick (AdapterView < ? > parent, View view,int position, long id){
 
                 Intent i = new Intent(this, HospitalUI.class);
-
                 startActivity(i);
             }
         }
