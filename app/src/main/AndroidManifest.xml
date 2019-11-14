@@ -21,7 +21,7 @@
         <activity android:name=".ProfileActivity" />
         <activity android:name=".ListActivity" />
         <activity android:name=".BloodDonationActivity" />
-        <activity android:name=".HospitalUI"></activity>
+        <activity android:name=".HospitalUI" />
     </application>
 
 </manifest>
