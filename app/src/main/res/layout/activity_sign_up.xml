@@ -8,6 +8,7 @@
     android:background="#000"
     tools:context=".SignUpActivity">
 
+
     <EditText
         android:id="@+id/editTextEmail"
         android:layout_width="match_parent"
@@ -16,22 +17,24 @@
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        android:textColor="#000" />
+        android:textColor="#000"
+        />
 
 
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@android:color/white"
         android:ems="10"
         android:hint="Password"
-        android:inputType="textPassword"
-        />
+        android:inputType="textPassword" />
 
     <EditText
         android:id="@+id/editTextConfirmPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@android:color/white"
         android:ems="10"
         android:hint="Confirm Password"
         android:inputType="textPassword" />
@@ -41,21 +44,21 @@
         android:id="@+id/editTextFullName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@android:color/white"
         android:ems="10"
         android:hint="FullName"
-        android:inputType="textPersonName"
-        />
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/buttonConfirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="BloodTypes"
         android:background="@drawable/buttonshape"
         android:shadowColor="#A8A8A8"
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="5"
+        android:text="BloodTypes"
 
         />
 
