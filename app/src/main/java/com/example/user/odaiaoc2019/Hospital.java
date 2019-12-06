@@ -24,7 +24,7 @@ public class Hospital {
         this.name = name;
     }
 
-    public int getImage() {
+    public int getImage( ) {
         return image;
     }
 

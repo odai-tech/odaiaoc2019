@@ -16,7 +16,8 @@ import java.util.ArrayList;
 public class HomePage extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     ListView listView;
-    ArrayList<BloodDonation> bloodDonations = new ArrayList<>();
+    ArrayList<BloodDonation> bloodDonations1 = new ArrayList<>();
+    ArrayList<BloodDonation> bloodDonations2 = new ArrayList<>();
     ArrayList<Hospital> hospitals = new ArrayList<>();
 
     @Override
@@ -26,10 +27,15 @@ public class HomePage extends AppCompatActivity implements AdapterView.OnItemCli
 
         listView = findViewById(R.id.hospitalList);
 
-        bloodDonations.add(new BloodDonation(33, "OO", true, R.drawable.ic_launcher_background, "first", "123", "123"));
+        bloodDonations1.add(new BloodDonation(33, "AB", true, R.drawable.ic_launcher_background, "first", "123", "123"));
+        bloodDonations1.add(new BloodDonation(33, "OO", true, R.drawable.ic_launcher_background, "first", "123", "123"));
 
-        hospitals.add(new Hospital(23.45, 2.36, bloodDonations, R.drawable.ic_launcher_background, "Odais Hospital"));
-        hospitals.add(new Hospital(19.5, 4.66, bloodDonations, R.drawable.ic_launcher_background, "Odais Hospital"));
+        bloodDonations2.add(new BloodDonation(33, "OO", true, R.drawable.ic_launcher_background, "first", "123", "123"));
+        bloodDonations2.add(new BloodDonation(33, "A+", true, R.drawable.ic_launcher_background, "first", "123", "123"));
+
+
+        hospitals.add(new Hospital(23.45, 2.36, bloodDonations1, R.drawable.bloodlogo, "Odais Hospital1"));
+        hospitals.add(new Hospital(19.5, 4.66, bloodDonations2, R.drawable.ic_launcher_background, "Odais Hospital2"));
 
         CustomAdapterHospital adapterHospital = new CustomAdapterHospital(this, R.layout.hospital_item, hospitals);
         listView.setAdapter(adapterHospital);
