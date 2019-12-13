@@ -35,7 +35,7 @@ public class HomePage extends AppCompatActivity implements AdapterView.OnItemCli
 
 
         hospitals.add(new Hospital(23.45, 2.36, bloodDonations1, R.drawable.bloodlogo, "Odais Hospital1"));
-        hospitals.add(new Hospital(19.5, 4.66, bloodDonations2, R.drawable.ic_launcher_background, "Odais Hospital2"));
+        hospitals.add(new Hospital(19.5, 4.66, bloodDonations2, R.drawable.bloodotype, "Odais Hospital2"));
 
         CustomAdapterHospital adapterHospital = new CustomAdapterHospital(this, R.layout.hospital_item, hospitals);
         listView.setAdapter(adapterHospital);
